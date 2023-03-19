@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <router-link to="/">Home</router-link>
   </div>
   <div>
     <div style="background: #99ccff; padding: 10px">
@@ -49,14 +50,12 @@
   <div>
     <div style="background: #ccc; padding: 10px">
       <h4>Ejercicio de fìsica</h4>
-      <span
-        >Dos vehículos viajan a diferentes velocidades (v1 y v2) y están
+      <span>Dos vehículos viajan a diferentes velocidades (v1 y v2) y están
         distanciados por una distancia d. El que está detrás viaja a una
         velocidad mayor. Se pide hacer un algoritmo para ingresar la distancia
         entre los dos vehículos (km) y sus respectivas velocidades (km/h) y con
         esto determinar y mostrar en qué tiempo (minutos) alcanzará el vehículo
-        más rápido al otro.</span
-      >
+        más rápido al otro.</span>
       <form>
         <section class="columna-izquierda">
           <h6>Ingrese la velocidad del vehículo 1 (km/h)</h6>
@@ -82,6 +81,31 @@
       </form>
     </div>
   </div>
+  <br />
+
+  <br>
+  <div>
+    <div style="background: #aaa; padding: 10px">
+      <h4>Factorial</h4>
+      <span>Calcula el factorial de un nùmero.</span>
+      <form>
+        <section class="columna-izquierda">
+          <h6>Ingrese el número al que desea calcularle su factorial</h6>
+          <input type="text" name="n" id="n" />
+          <br />
+          <button @click="factorial"> Calcular</button>
+        </section>
+      </form>
+      <section class="columna-derecha">
+        <h6>
+          El resultado es:
+        </h6>
+        <br />
+        <input type="text" id="factorial" />
+        <br />
+      </section>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -95,7 +119,6 @@ export default {
       let nombre = document.getElementById("nombre").value;
       document.getElementById("mensaje").innerHTML = "¡Hola " + nombre + "!";
     },
-
     media() {
       let x = parseFloat(document.getElementById("x").value);
       let y = parseFloat(document.getElementById("y").value);
@@ -112,8 +135,16 @@ export default {
       let tiempo = distancia / (velocidad_1 - velocidad_v2);
       let tiempo_final = tiempo * 60;
 
-      document.getElementById("tiempo_final_resultado").value =
+      document.getElementById("factorial").value =
         tiempo_final.toFixed(2);
+    },
+    factorial() {
+      let n = parseInt(document.getElementById('n').value);
+      let factorial = 1;
+      for (let i = 2; i <= n; i++) {
+        factorial *= i;
+      }
+      document.getElementById("factorial").value = factorial;
     },
   },
 };
@@ -143,10 +174,12 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
